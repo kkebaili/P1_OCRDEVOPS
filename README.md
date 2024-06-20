@@ -30,28 +30,22 @@ To compile and run the application locally, follow these steps:
 1. Ensure you have JDK 21 installed.
 2. Clone this repository.
 3. Navigate to the project root directory.
-4. Execute the following command to compile the Java code:
+4. Execute the following command to compile the Java code :
    ```bash
    ./gradlew clean compileJava
    ```
-5. To run the application, either:
+5. To run the application locally, either:
    Execute the main method in the Application class from your IDE.
    Use the Spring Boot Gradle Plugin :
    ```bash
    ./gradlew bootRun
    ```
+   For production, package the application as WAR and use a tomcat server
 
-To run correctly the application, ensure you setup the postgres Database (localy installed or installed with docker)
-
-```bash
-docker run -p "5432:5432" -e "POSTGRES_DB=workshopsdb" -e "POSTGRES_USER=workshops_user" -e "POSTGRES_PASSWORD=oc2024" postgres:13
-
-```
-
-Alternatively, you could use the compose file by executing the following command
+To run correctly the application with docker after you building it with tag workshop-organizer, run the following
 
 ```bash
-docker compose up
+docker compose up -d
 ```
 
 ## Configuration

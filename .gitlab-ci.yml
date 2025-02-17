@@ -1,3 +1,42 @@
-git add .gitlab-ci.yml
-git commit -m "Ajout du pipeline CI/CD"
-git push origin main
+image: gradle:8.6-jdk17 # Utilisation d'une image Gradle avec JDK préinstallé
+
+stages:
+- build
+- test
+- publish
+
+variables:
+  GRADLE_OPTS: "-Dorg.gradle.daemon=false"
+
+before_script:
+- echo "🔧 Initialisation de l'environnement..."
+- chmod +x gradlew # S'assurer que Gradle Wrapper est exécutable
+
+build:
+  stage: build
+  script:
+  - ./gradlew build
+  artifacts:
+    paths:
+    - build/libs/*.war # Stocker l'artefact WAR pour les autres jobs
+    expire_in: 1 week
+
+test:
+  stage: test
+  script:
+  - ./gradlew test
+  allow_failure: false # Le pipeline échoue si les tests échouent
+
+publish:
+  stage: publish
+  dependencies:
+  - build # Assure que `publish` utilise l'artefact du `build`
+  script:
+  - export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+  - echo "Authentification pour GitLab Package Registry..."
+  - echo "machine gitlab.com login ${CI_DEPLOY_USER} password ${CI_DEPLOY_PASSWORD}" > ~/.netrc
+  - ./gradlew publish
+  rules:
+  - if: $CI_COMMIT_BRANCH == "main" # Déclenche ce job uniquement si la branche est `main`
+
+

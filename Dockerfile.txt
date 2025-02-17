@@ -1,0 +1,32 @@
+# Étape 1 : Construction de l'application avec Gradle
+FROM gradle:8.7-jdk21-alpine AS builder
+
+# Définir le répertoire de travail
+WORKDIR /app
+
+# Copier les fichiers Gradle et télécharger les dépendances
+COPY build.gradle settings.gradle gradlew ./
+COPY gradle gradle/
+RUN ./gradlew dependencies --no-daemon
+
+# Copier les fichiers source
+COPY . .
+
+# Construire le fichier WAR
+RUN ./gradlew bootWar --no-daemon && \
+    rm -rf /root/.gradle/caches/
+
+# Étape 2 : Préparer l'image finale avec Tomcat
+FROM tomcat:10.1.24-jre21-temurin-jammy
+
+# Supprimer les applications par défaut de Tomcat
+RUN rm -rf /usr/local/tomcat/webapps/*
+
+# Copier le fichier WAR généré dans le répertoire de déploiement de Tomcat
+COPY --from=builder /app/build/libs/*.war /usr/local/tomcat/webapps/ROOT.war
+
+# Exposer le port utilisé par l'application
+EXPOSE 8080
+
+# Commande par défaut pour démarrer Tomcat
+CMD ["catalina.sh", "run"]

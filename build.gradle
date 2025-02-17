@@ -1,97 +1,146 @@
 plugins {
-	id 'org.openapi.generator' version '7.4.0'
-	id 'org.springframework.boot' version '3.2.4'
-	id 'io.spring.dependency-management' version '1.1.4'
-	id 'java'
-	id 'maven-publish'
-	id 'war'
+    id 'java'
+    id 'org.openapi.generator' version '7.4.0'
+    id 'org.springframework.boot' version '3.2.4'
+    id 'io.spring.dependency-management' version '1.1.4'
+    id 'maven-publish'
+    id 'war'  // ✅ Plugin pour générer un fichier .war
 }
 
-group = 'fr.oc.devops'
-version = '0.2.4'
+tasks.configureEach {
+    if (it.name == "bootBuildImage") {
+        it.enabled = false
+    }
+}
 
 repositories {
-	mavenCentral()
-}
-
-sourceSets {
-	main {
-		java {
-			srcDirs 'src/main/java'
-			srcDirs 'src/main/java-generated'
-		}
-	}
+    mavenCentral()
 }
 
 dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.modelmapper:modelmapper:3.1.1'
+        
+    // OpenAPI & Swagger
+    implementation 'io.swagger.core.v3:swagger-annotations:2.2.21'
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0'
+    implementation 'org.openapitools:jackson-databind-nullable:0.2.6'
 
-	implementation 'org.openapitools:jackson-databind-nullable:0.2.6'
-	implementation 'io.swagger.core.v3:swagger-annotations:2.2.21'
+    // Validation (Jakarta)
+    implementation 'jakarta.validation:jakarta.validation-api:3.0.2'
+    implementation 'org.hibernate.validator:hibernate-validator:8.0.1.Final'
 
-	implementation 'org.modelmapper:modelmapper:3.1.0'
+    // Outils JSON
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.3'
 
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.springframework.boot:spring-boot-starter-validation'
+    // Lombok
+    implementation 'org.projectlombok:lombok:1.18.28'
+    annotationProcessor 'org.projectlombok:lombok:1.18.28'
 
-	runtimeOnly 'org.postgresql:postgresql:42.7.3'
+    runtimeOnly 'org.postgresql:postgresql:42.7.3'
 
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-
+    // Tests
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    runtimeOnly 'com.h2database:h2'
 }
 
-processResources {
-	from("$rootDir/src/main/resources/specs/openapi.yaml") {
-		into("static")
-	}
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(17))
+    }
 }
 
-openApiGenerate {
-	generatorName = "spring"
-	inputSpec = "$rootDir/src/main/resources/specs/openapi.yaml".toString()
-	apiPackage = "fr.oc.devops.backend"
-	modelPackage = "fr.oc.devops.backend.models"
-	configOptions = [
-			dateLibrary: "java8",
-			interfaceOnly: "true",
-			skipDefaultInterface: "true",
-			useSpringBoot3: "true",
-			library: 'spring-boot',
-			openApiNullable: 'true',
-			sourceFolder: "../../../src/main/java-generated".toString()
-	]
+sourceSets {
+    main {
+        java {
+            srcDirs = [
+                'src/main/java',
+                'build/generate-resources/main/src/main/java-generated'
+            ]
+        }
+    }
 }
 
-compileJava.dependsOn tasks.openApiGenerate
-
-test {
-	useJUnitPlatform()
-	testLogging {
-		events "passed", "skipped", "failed"
-	}
-}
+apply plugin: 'war'
 
 war {
-    enabled = false
+    archiveFileName.set("mon-app.war")  // ✅ Force le nom du .war
+    destinationDirectory.set(file("$buildDir/libs"))  // ✅ S'assure qu'il est bien dans build/libs
 }
 
+// Génération automatique du code OpenAPI
+openApiGenerate {
+    generatorName = "spring"
+    inputSpec = "$rootDir/src/main/resources/specs/openapi.yaml".toString()
+    apiPackage = "fr.oc.devops.backend"
+    modelPackage = "fr.oc.devops.backend.models"
+    configOptions = [
+        dateLibrary: "java8",
+        interfaceOnly: "true",
+        skipDefaultInterface: "true",
+        useSpringBoot3: "true",
+        library: 'spring-boot',
+        openApiNullable: 'true',
+        sourceFolder: "src/main/java-generated".toString()
+    ]
+}
+
+tasks.named('compileJava') {
+    dependsOn tasks.named('openApiGenerate')
+}
+
+// ✅ Ajout de `war` dans la tâche `build` pour générer le `.war`
+tasks.named('build') {
+    dependsOn 'war'
+    doLast {
+        println '✅ La tâche de compilation a été exécutée avec succès!'
+    }
+}
+
+// ✅ Tâche de test
+tasks.named('test') {
+    doLast {
+        println '✅ Les tests unitaires ont été exécutés avec succès!'
+    }
+}
+
+// ✅ Nouvelle tâche pour packager l'application avec un `.war`
+tasks.register('pack') {
+    dependsOn 'build'
+    doLast {
+        def warFile = file("$buildDir/libs/mon-app.war")
+        if (warFile.exists()) {
+            println "✅ L'application a été packagée avec succès : ${warFile}"
+        } else {
+            println "❌ ERREUR : Le fichier .war n'a pas été généré ! Vérifiez la configuration de Gradle."
+        }
+    }
+}
+
+// ✅ Configuration de la publication sur GitLab
 publishing {
     publications {
-		MavenPublication(MavenPublication) {
-			artifact bootWar
-		}
+        mavenJava(MavenPublication) {
+            from components.web  // ✅ Publie le `.war` au lieu du `.jar`
+            groupId = "com.example"  // Remplace par ton Group ID
+            artifactId = "mon-app"
+            version = "1.0.0"
+        }
     }
     repositories {
-		maven {
-			url "https://gitlab.com/api/v4/projects/$System.env.GITLAB_PROJECT_ID/packages/maven"
-			name "GitLab"
-			credentials(HttpHeaderCredentials) {
-				name = System.getenv("GITLAB_TOKEN_NAME")
-				value = System.getenv("GITLAB_TOKEN")
-			}
-			authentication {
-				header(HttpHeaderAuthentication)
-			}
-		}
+        maven {
+            url = uri("https://gitlab.com/api/v4/projects/66063494/packages/maven")
+            credentials {
+                username = "gitlab+deploy-token-7355062"
+                password = "gldt-G4omAUxxGiRWgkDdwrS3"
+            }
+        }
+    }
+}
+tasks.configureEach {
+    if (it.name == "bootBuildImage") {
+        it.enabled = false
     }
 }

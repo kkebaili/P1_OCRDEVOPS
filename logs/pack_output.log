@@ -1,0 +1,241 @@
+Initialized native services in: /home/osboxes/.gradle/native
+Initialized jansi services in: /home/osboxes/.gradle/native
+Received JVM installation metadata from '/usr/lib/jvm/java-21-openjdk-amd64': {JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64, JAVA_VERSION=21.0.6, JAVA_VENDOR=Ubuntu, RUNTIME_NAME=OpenJDK Runtime Environment, RUNTIME_VERSION=21.0.6+7-Ubuntu-120.04.1, VM_NAME=OpenJDK 64-Bit Server VM, VM_VERSION=21.0.6+7-Ubuntu-120.04.1, VM_VENDOR=Ubuntu, OS_ARCH=amd64}
+The client will now receive all logging from the daemon (pid: 2606). The daemon log file: /home/osboxes/.gradle/daemon/8.7/daemon-2606.out.log
+Starting 7th build in daemon [uptime: 54 mins 35.063 secs, performance: 99%, GC rate: 0.00/s, heap usage: 9% of 341.3 MiB, non-heap usage: 23% of 384 MiB]
+Using 1 worker leases.
+Now considering [/home/osboxes/DEVOPS2] as hierarchies to watch
+Watching the file system is configured to be enabled if available
+File system watching is active
+Starting Build
+Settings evaluated using settings file '/home/osboxes/DEVOPS2/settings.gradle'.
+Projects loaded. Root project using build file '/home/osboxes/DEVOPS2/build.gradle'.
+Included projects: [root project 'workshop-organizer']
+
+> Configure project :
+Evaluating root project 'workshop-organizer' using build file '/home/osboxes/DEVOPS2/build.gradle'.
+Transforming openapi-generator-gradle-plugin-7.4.0.jar (org.openapitools:openapi-generator-gradle-plugin:7.4.0) with ExternalDependencyInstrumentingArtifactTransform
+Transforming spring-boot-gradle-plugin-3.2.4.jar (org.springframework.boot:spring-boot-gradle-plugin:3.2.4) with ExternalDependencyInstrumentingArtifactTransform
+Transforming dependency-management-plugin-1.1.4.jar (io.spring.gradle:dependency-management-plugin:1.1.4) with ExternalDependencyInstrumentingArtifactTransform
+Transforming openapi-generator-7.4.0.jar (org.openapitools:openapi-generator:7.4.0) with ExternalDependencyInstrumentingArtifactTransform
+Transforming spring-boot-buildpack-platform-3.2.4.jar (org.springframework.boot:spring-boot-buildpack-platform:3.2.4) with ExternalDependencyInstrumentingArtifactTransform
+Transforming spring-boot-loader-tools-3.2.4.jar (org.springframework.boot:spring-boot-loader-tools:3.2.4) with ExternalDependencyInstrumentingArtifactTransform
+Transforming commons-compress-1.21.jar (org.apache.commons:commons-compress:1.21) with ExternalDependencyInstrumentingArtifactTransform
+Transforming spring-core-6.0.10.jar (org.springframework:spring-core:6.0.10) with ExternalDependencyInstrumentingArtifactTransform
+Transforming swagger-parser-2.1.18.jar (io.swagger.parser.v3:swagger-parser:2.1.18) with ExternalDependencyInstrumentingArtifactTransform
+Transforming jmustache-1.15.jar (com.samskivert:jmustache:1.15) with ExternalDependencyInstrumentingArtifactTransform
+Transforming handlebars-jackson2-4.3.1.jar (com.github.jknack:handlebars-jackson2:4.3.1) with ExternalDependencyInstrumentingArtifactTransform
+Transforming handlebars-4.3.1.jar (com.github.jknack:handlebars:4.3.1) with ExternalDependencyInstrumentingArtifactTransform
+Transforming swagger-parser-v2-converter-2.1.18.jar (io.swagger.parser.v3:swagger-parser-v2-converter:2.1.18) with ExternalDependencyInstrumentingArtifactTransform
+Transforming swagger-parser-v3-2.1.18.jar (io.swagger.parser.v3:swagger-parser-v3:2.1.18) with ExternalDependencyInstrumentingArtifactTransform
+Transforming swagger-compat-spec-parser-1.0.68.jar (io.swagger:swagger-compat-spec-parser:1.0.68) with ExternalDependencyInstrumentingArtifactTransform
+Transforming swagger-parser-1.0.68.jar (io.swagger:swagger-parser:1.0.68) with ExternalDependencyInstrumentingArtifactTransform
+Transforming swagger-parser-safe-url-resolver-2.1.18.jar (io.swagger.parser.v3:swagger-parser-safe-url-resolver:2.1.18) with ExternalDependencyInstrumentingArtifactTransform
+Transforming commons-io-2.14.0.jar (commons-io:commons-io:2.14.0) with ExternalDependencyInstrumentingArtifactTransform
+Transforming slf4j-ext-1.7.36.jar (org.slf4j:slf4j-ext:1.7.36) with ExternalDependencyInstrumentingArtifactTransform
+Transforming slf4j-simple-1.7.36.jar (org.slf4j:slf4j-simple:1.7.36) with ExternalDependencyInstrumentingArtifactTransform
+Transforming openapi-generator-core-7.4.0.jar (org.openapitools:openapi-generator-core:7.4.0) with ExternalDependencyInstrumentingArtifactTransform
+Transforming httpclient5-5.2.3.jar (org.apache.httpcomponents.client5:httpclient5:5.2.3) with ExternalDependencyInstrumentingArtifactTransform
+Transforming swagger-core-2.2.17.jar (io.swagger.core.v3:swagger-core:2.2.17) with ExternalDependencyInstrumentingArtifactTransform
+Transforming swagger-core-1.6.12.jar (io.swagger:swagger-core:1.6.12) with ExternalDependencyInstrumentingArtifactTransform
+Transforming swagger-models-1.6.12.jar (io.swagger:swagger-models:1.6.12) with ExternalDependencyInstrumentingArtifactTransform
+Transforming slf4j-api-2.0.9.jar (org.slf4j:slf4j-api:2.0.9) with ExternalDependencyInstrumentingArtifactTransform
+Transforming commons-text-1.10.0.jar (org.apache.commons:commons-text:1.10.0) with ExternalDependencyInstrumentingArtifactTransform
+Transforming commons-lang3-3.13.0.jar (org.apache.commons:commons-lang3:3.13.0) with ExternalDependencyInstrumentingArtifactTransform
+Transforming commons-cli-1.5.0.jar (commons-cli:commons-cli:1.5.0) with ExternalDependencyInstrumentingArtifactTransform
+Transforming jackson-datatype-joda-2.15.3.jar (com.fasterxml.jackson.datatype:jackson-datatype-joda:2.15.3) with ExternalDependencyInstrumentingArtifactTransform
+Transforming jackson-datatype-threetenbp-2.15.2.jar (com.github.joschi.jackson:jackson-datatype-threetenbp:2.15.2) with ExternalDependencyInstrumentingArtifactTransform
+Transforming jackson-dataformat-yaml-2.15.3.jar (com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.15.3) with ExternalDependencyInstrumentingArtifactTransform
+Transforming jackson-module-parameter-names-2.15.3.jar (com.fasterxml.jackson.module:jackson-module-parameter-names:2.15.3) with ExternalDependencyInstrumentingArtifactTransform
+Transforming json-patch-1.13.jar (com.github.java-json-tools:json-patch:1.13) with ExternalDependencyInstrumentingArtifactTransform
+Transforming jackson-datatype-jsr310-2.15.3.jar (com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.15.3) with ExternalDependencyInstrumentingArtifactTransform
+Transforming json-schema-validator-2.2.14.jar (com.github.java-json-tools:json-schema-validator:2.2.14) with ExternalDependencyInstrumentingArtifactTransform
+Transforming json-schema-core-1.2.14.jar (com.github.java-json-tools:json-schema-core:1.2.14) with ExternalDependencyInstrumentingArtifactTransform
+Transforming jackson-coreutils-equivalence-1.0.jar (com.github.java-json-tools:jackson-coreutils-equivalence:1.0) with ExternalDependencyInstrumentingArtifactTransform
+Transforming jackson-coreutils-2.0.jar (com.github.java-json-tools:jackson-coreutils:2.0) with ExternalDependencyInstrumentingArtifactTransform
+Transforming jackson-databind-2.15.3.jar (com.fasterxml.jackson.core:jackson-databind:2.15.3) with ExternalDependencyInstrumentingArtifactTransform
+Transforming jackson-core-2.15.3.jar (com.fasterxml.jackson.core:jackson-core:2.15.3) with ExternalDependencyInstrumentingArtifactTransform
+Transforming swagger-parser-core-2.1.18.jar (io.swagger.parser.v3:swagger-parser-core:2.1.18) with ExternalDependencyInstrumentingArtifactTransform
+Transforming swagger-models-2.2.17.jar (io.swagger.core.v3:swagger-models:2.2.17) with ExternalDependencyInstrumentingArtifactTransform
+Transforming jackson-annotations-2.15.3.jar (com.fasterxml.jackson.core:jackson-annotations:2.15.3) with ExternalDependencyInstrumentingArtifactTransform
+Transforming jackson-datatype-guava-2.15.3.jar (com.fasterxml.jackson.datatype:jackson-datatype-guava:2.15.3) with ExternalDependencyInstrumentingArtifactTransform
+Transforming uri-template-0.10.jar (com.github.java-json-tools:uri-template:0.10) with ExternalDependencyInstrumentingArtifactTransform
+Transforming guava-32.1.3-jre.jar (com.google.guava:guava:32.1.3-jre) with ExternalDependencyInstrumentingArtifactTransform
+Transforming commonmark-0.21.0.jar (org.commonmark:commonmark:0.21.0) with ExternalDependencyInstrumentingArtifactTransform
+Transforming generex-1.0.2.jar (com.github.mifmif:generex:1.0.2) with ExternalDependencyInstrumentingArtifactTransform
+Transforming rgxgen-1.4.jar (com.github.curious-odd-man:rgxgen:1.4) with ExternalDependencyInstrumentingArtifactTransform
+Transforming jna-platform-5.13.0.jar (net.java.dev.jna:jna-platform:5.13.0) with ExternalDependencyInstrumentingArtifactTransform
+Transforming jna-5.13.0.jar (net.java.dev.jna:jna:5.13.0) with ExternalDependencyInstrumentingArtifactTransform
+Transforming caffeine-2.9.3.jar (com.github.ben-manes.caffeine:caffeine:2.9.3) with ExternalDependencyInstrumentingArtifactTransform
+Transforming lombok-1.18.30.jar (org.projectlombok:lombok:1.18.30) with ExternalDependencyInstrumentingArtifactTransform
+Transforming tomlj-1.0.0.jar (org.tomlj:tomlj:1.0.0) with ExternalDependencyInstrumentingArtifactTransform
+Transforming spring-jcl-6.0.10.jar (org.springframework:spring-jcl:6.0.10) with ExternalDependencyInstrumentingArtifactTransform
+Transforming snakeyaml-2.2.jar (org.yaml:snakeyaml:2.2) with ExternalDependencyInstrumentingArtifactTransform
+Transforming failureaccess-1.0.1.jar (com.google.guava:failureaccess:1.0.1) with ExternalDependencyInstrumentingArtifactTransform
+Transforming listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar (com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava) with ExternalDependencyInstrumentingArtifactTransform
+Transforming msg-simple-1.2.jar (com.github.java-json-tools:msg-simple:1.2) with ExternalDependencyInstrumentingArtifactTransform
+Transforming btf-1.3.jar (com.github.java-json-tools:btf:1.3) with ExternalDependencyInstrumentingArtifactTransform
+Transforming jsr305-3.0.2.jar (com.google.code.findbugs:jsr305:3.0.2) with ExternalDependencyInstrumentingArtifactTransform
+Transforming checker-qual-3.37.0.jar (org.checkerframework:checker-qual:3.37.0) with ExternalDependencyInstrumentingArtifactTransform
+Transforming error_prone_annotations-2.21.1.jar (com.google.errorprone:error_prone_annotations:2.21.1) with ExternalDependencyInstrumentingArtifactTransform
+Transforming automaton-1.11-8.jar (dk.brics.automaton:automaton:1.11-8) with ExternalDependencyInstrumentingArtifactTransform
+Transforming joda-time-2.10.14.jar (joda-time:joda-time:2.10.14) with ExternalDependencyInstrumentingArtifactTransform
+Transforming threetenbp-1.6.8.jar (org.threeten:threetenbp:1.6.8) with ExternalDependencyInstrumentingArtifactTransform
+Transforming httpcore5-h2-5.2.4.jar (org.apache.httpcomponents.core5:httpcore5-h2:5.2.4) with ExternalDependencyInstrumentingArtifactTransform
+Transforming httpcore5-5.2.4.jar (org.apache.httpcomponents.core5:httpcore5:5.2.4) with ExternalDependencyInstrumentingArtifactTransform
+Transforming antlr4-runtime-4.7.2.jar (org.antlr:antlr4-runtime:4.7.2) with ExternalDependencyInstrumentingArtifactTransform
+Transforming jakarta.xml.bind-api-2.3.3.jar (jakarta.xml.bind:jakarta.xml.bind-api:2.3.3) with ExternalDependencyInstrumentingArtifactTransform
+Transforming httpclient-4.5.14.jar (org.apache.httpcomponents:httpclient:4.5.14) with ExternalDependencyInstrumentingArtifactTransform
+Transforming swagger-annotations-2.2.17.jar (io.swagger.core.v3:swagger-annotations:2.2.17) with ExternalDependencyInstrumentingArtifactTransform
+Transforming jakarta.validation-api-2.0.2.jar (jakarta.validation:jakarta.validation-api:2.0.2) with ExternalDependencyInstrumentingArtifactTransform
+Transforming jakarta.activation-api-1.2.2.jar (jakarta.activation:jakarta.activation-api:1.2.2) with ExternalDependencyInstrumentingArtifactTransform
+Transforming swagger-annotations-1.6.12.jar (io.swagger:swagger-annotations:1.6.12) with ExternalDependencyInstrumentingArtifactTransform
+Transforming validation-api-1.1.0.Final.jar (javax.validation:validation-api:1.1.0.Final) with ExternalDependencyInstrumentingArtifactTransform
+Transforming libphonenumber-8.11.1.jar (com.googlecode.libphonenumber:libphonenumber:8.11.1) with ExternalDependencyInstrumentingArtifactTransform
+Transforming jopt-simple-5.0.4.jar (net.sf.jopt-simple:jopt-simple:5.0.4) with ExternalDependencyInstrumentingArtifactTransform
+Transforming httpcore-4.4.16.jar (org.apache.httpcomponents:httpcore:4.4.16) with ExternalDependencyInstrumentingArtifactTransform
+Transforming commons-logging-1.2.jar (commons-logging:commons-logging:1.2) with ExternalDependencyInstrumentingArtifactTransform
+Transforming commons-codec-1.11.jar (commons-codec:commons-codec:1.11) with ExternalDependencyInstrumentingArtifactTransform
+Transforming rhino-1.7.7.2.jar (org.mozilla:rhino:1.7.7.2) with ExternalDependencyInstrumentingArtifactTransform
+Applying dependency management to configuration 'annotationProcessor' in project 'workshop-organizer'
+Applying dependency management to configuration 'apiElements' in project 'workshop-organizer'
+Applying dependency management to configuration 'archives' in project 'workshop-organizer'
+Applying dependency management to configuration 'bootArchives' in project 'workshop-organizer'
+Applying dependency management to configuration 'compileClasspath' in project 'workshop-organizer'
+Applying dependency management to configuration 'compileOnly' in project 'workshop-organizer'
+Applying dependency management to configuration 'default' in project 'workshop-organizer'
+Applying dependency management to configuration 'developmentOnly' in project 'workshop-organizer'
+Applying dependency management to configuration 'implementation' in project 'workshop-organizer'
+Applying dependency management to configuration 'mainSourceElements' in project 'workshop-organizer'
+Applying dependency management to configuration 'productionRuntimeClasspath' in project 'workshop-organizer'
+Applying dependency management to configuration 'runtimeClasspath' in project 'workshop-organizer'
+Applying dependency management to configuration 'runtimeElements' in project 'workshop-organizer'
+Applying dependency management to configuration 'runtimeOnly' in project 'workshop-organizer'
+Applying dependency management to configuration 'testAndDevelopmentOnly' in project 'workshop-organizer'
+Applying dependency management to configuration 'testAnnotationProcessor' in project 'workshop-organizer'
+Applying dependency management to configuration 'testCompileClasspath' in project 'workshop-organizer'
+Applying dependency management to configuration 'testCompileOnly' in project 'workshop-organizer'
+Applying dependency management to configuration 'testImplementation' in project 'workshop-organizer'
+Applying dependency management to configuration 'testResultsElementsForTest' in project 'workshop-organizer'
+Applying dependency management to configuration 'testRuntimeClasspath' in project 'workshop-organizer'
+Applying dependency management to configuration 'testRuntimeOnly' in project 'workshop-organizer'
+Applying dependency management to configuration 'providedCompile' in project 'workshop-organizer'
+Applying dependency management to configuration 'providedRuntime' in project 'workshop-organizer'
+All projects evaluated.
+Task name matched 'clean'
+Task name matched 'war'
+Selected primary task 'clean' from project :
+Selected primary task 'war' from project :
+Path for java installation '/usr/lib/jvm/openjdk-17' (Common Linux Locations) does not contain a java executable
+Path for java installation '/usr/lib/jvm/openjdk-21' (Common Linux Locations) does not contain a java executable
+Tasks to be executed: [task ':clean', task ':openApiGenerate', task ':compileJava', task ':processResources', task ':classes', task ':war']
+Tasks that were excluded: []
+Resolve mutations for :clean (Thread[#247,included builds,5,main]) started.
+:clean (Thread[#247,included builds,5,main]) started.
+
+> Task :clean
+Caching disabled for task ':clean' because:
+  Build cache is disabled
+Task ':clean' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+destroyer locations for task group 0 (Thread[#247,included builds,5,main]) started.
+Resolve mutations for :openApiGenerate (Thread[#247,included builds,5,main]) started.
+:openApiGenerate (Thread[#247,included builds,5,main]) started.
+
+> Task :openApiGenerate
+Caching disabled for task ':openApiGenerate' because:
+  Build cache is disabled
+Task ':openApiGenerate' is not up-to-date because:
+  Output property 'outputDir' file /home/osboxes/DEVOPS2/build/generate-resources/main has been removed.
+  Output property 'outputDir' file /home/osboxes/DEVOPS2/build/generate-resources/main/.openapi-generator has been removed.
+  Output property 'outputDir' file /home/osboxes/DEVOPS2/build/generate-resources/main/.openapi-generator/FILES has been removed.
+  Output property 'outputDir' file /home/osboxes/DEVOPS2/build/generate-resources/main/.openapi-generator/VERSION has been removed.
+  Output property 'outputDir' file /home/osboxes/DEVOPS2/build/generate-resources/main/.openapi-generator-ignore has been removed.
+  Output property 'outputDir' file /home/osboxes/DEVOPS2/build/generate-resources/main/pom.xml has been removed.
+  Output property 'outputDir' file /home/osboxes/DEVOPS2/build/generate-resources/main/README.md has been removed.
+  Output property 'outputDir' file /home/osboxes/DEVOPS2/build/generate-resources/main/src has been removed.
+Generating with dryRun=false
+No .openapi-generator-ignore file found.
+OpenAPI Generator: spring (server)
+Generator 'spring' is considered stable.
+----------------------------------
+Environment variable JAVA_POST_PROCESS_FILE not defined so the Java code may not be properly formatted. To define it, try 'export JAVA_POST_PROCESS_FILE="/usr/local/bin/clang-format -i"' (Linux/Mac)
+NOTE: To enable file post-processing, 'enablePostProcessFile' must be set to `true` (--enable-post-process-file for CLI).
+Invoker Package Name, originally not set, is now derived from api package name: fr.oc.devops
+Processing operation listNotions
+Processing operation createNotion
+Processing operation listWorkshops
+Processing operation createWorkshops
+Processing operation showWorkshopById
+writing file /home/osboxes/DEVOPS2/build/generate-resources/main/src/main/java-generated/fr/oc/devops/backend/models/Error.java
+writing file /home/osboxes/DEVOPS2/build/generate-resources/main/src/main/java-generated/fr/oc/devops/backend/models/NewNotion.java
+writing file /home/osboxes/DEVOPS2/build/generate-resources/main/src/main/java-generated/fr/oc/devops/backend/models/NewWorkshop.java
+writing file /home/osboxes/DEVOPS2/build/generate-resources/main/src/main/java-generated/fr/oc/devops/backend/models/Notion.java
+writing file /home/osboxes/DEVOPS2/build/generate-resources/main/src/main/java-generated/fr/oc/devops/backend/models/Workshop.java
+writing file /home/osboxes/DEVOPS2/build/generate-resources/main/src/main/java-generated/fr/oc/devops/backend/NotionsApi.java
+writing file /home/osboxes/DEVOPS2/build/generate-resources/main/src/main/java-generated/fr/oc/devops/backend/WorkshopsApi.java
+writing file /home/osboxes/DEVOPS2/build/generate-resources/main/pom.xml
+writing file /home/osboxes/DEVOPS2/build/generate-resources/main/README.md
+writing file /home/osboxes/DEVOPS2/build/generate-resources/main/src/main/java-generated/fr/oc/devops/backend/ApiUtil.java
+writing file /home/osboxes/DEVOPS2/build/generate-resources/main/.openapi-generator-ignore
+writing file /home/osboxes/DEVOPS2/build/generate-resources/main/.openapi-generator/VERSION
+writing file /home/osboxes/DEVOPS2/build/generate-resources/main/.openapi-generator/FILES
+################################################################################
+# Thanks for using OpenAPI Generator.                                          #
+# Please consider donation to help us maintain this project 🙏                 #
+# https://opencollective.com/openapi_generator/donate                          #
+################################################################################
+Successfully generated code to /home/osboxes/DEVOPS2/build/generate-resources/main
+Resolve mutations for :compileJava (Thread[#247,included builds,5,main]) started.
+:compileJava (Thread[#247,included builds,5,main]) started.
+
+> Task :compileJava
+Resolving global dependency management for project 'workshop-organizer'
+Excluding []
+Excluding []
+Custom actions are attached to task ':compileJava'.
+Caching disabled for task ':compileJava' because:
+  Build cache is disabled
+Task ':compileJava' is not up-to-date because:
+  Output property 'destinationDirectory' file /home/osboxes/DEVOPS2/build/classes/java/main has been removed.
+  Output property 'destinationDirectory' file /home/osboxes/DEVOPS2/build/classes/java/main/fr has been removed.
+  Output property 'destinationDirectory' file /home/osboxes/DEVOPS2/build/classes/java/main/fr/oc has been removed.
+  Output property 'options.generatedSourceOutputDirectory' file /home/osboxes/DEVOPS2/build/generated/sources/annotationProcessor/java/main has been removed.
+The input changes require a full rebuild for incremental task ':compileJava'.
+Full recompilation is required because no incremental change information is available. This is usually caused by clean builds or changing compiler arguments.
+Compiling with toolchain '/usr/lib/jvm/java-17-openjdk-amd64'.
+Compiling with JDK Java compiler API.
+Class dependency analysis for incremental compilation took 0.005 secs.
+Created classpath snapshot for incremental compilation in 0.06 secs.
+Resolve mutations for :processResources (Thread[#247,included builds,5,main]) started.
+:processResources (Thread[#247,included builds,5,main]) started.
+
+> Task :processResources
+Caching disabled for task ':processResources' because:
+  Build cache is disabled
+  Not worth caching
+Task ':processResources' is not up-to-date because:
+  Output property 'destinationDir' file /home/osboxes/DEVOPS2/build/resources/main has been removed.
+  Output property 'destinationDir' file /home/osboxes/DEVOPS2/build/resources/main/application.properties has been removed.
+  Output property 'destinationDir' file /home/osboxes/DEVOPS2/build/resources/main/specs has been removed.
+  Output property 'destinationDir' file /home/osboxes/DEVOPS2/build/resources/main/static has been removed.
+Resolve mutations for :classes (Thread[#247,included builds,5,main]) started.
+:classes (Thread[#247,included builds,5,main]) started.
+
+> Task :classes
+Skipping task ':classes' as it has no actions.
+Resolve mutations for :war (Thread[#247,included builds,5,main]) started.
+:war (Thread[#247,included builds,5,main]) started.
+
+> Task :war
+Excluding []
+Excluding []
+Caching disabled for task ':war' because:
+  Build cache is disabled
+  Not worth caching
+Task ':war' is not up-to-date because:
+  Output property 'archiveFile' file /home/osboxes/DEVOPS2/build/libs/mon-app.war has been removed.
+file or directory '/home/osboxes/DEVOPS2/src/main/webapp', not found
+
+BUILD SUCCESSFUL in 16s
+5 actionable tasks: 5 executed

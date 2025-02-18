@@ -8,12 +8,12 @@ stages:
 
 variables:
   GRADLE_OPTS: "-Dorg.gradle.daemon=false"
+  JAVA_HOME: "/opt/java/openjdk" # Assurez-vous que c'est la bonne valeur
 
 before_script:
 - echo "🔧 Initialisation de l'environnement..."
 - chmod +x gradlew # S'assurer que Gradle Wrapper est exécutable
 - java -version # Vérifier la version de Java
-- ls -l /usr/lib/jvm/ # Vérifier si Java 17 est installé
 
 build:
   stage: build
@@ -34,16 +34,14 @@ pack:
   stage: pack
   script:
   - ./gradlew war # Si c'est un projet WAR
-  # - ./gradlew jar  # Utiliser JAR si nécessaire
   artifacts:
     paths:
-    - build/libs/*.war # Change selon ton build (ex: `.jar`)
+    - build/libs/*.war
     expire_in: 1 week
 
 publish:
   stage: publish
   script:
-  - export JAVA_HOME="/opt/java/openjdk" # Correction ici
   - echo "Authentification pour GitLab Package Registry..."
   - echo "machine gitlab.com login ${CI_DEPLOY_USER} password ${CI_DEPLOY_PASSWORD}" > ~/.netrc
   - ./gradlew publish

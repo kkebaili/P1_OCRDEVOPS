@@ -1,8 +1,10 @@
-image: gradle:8.6-jdk17 # Utilisation d'une image Gradle avec JDK préinstallé
+image: gradle:8.6-jdk17 # Vérifie l'image utilisée
 
 stages:
+- validate
 - build
 - test
+- pack
 - publish
 
 variables:
@@ -11,6 +13,16 @@ variables:
 before_script:
 - echo "🔧 Initialisation de l'environnement..."
 - chmod +x gradlew # S'assurer que Gradle Wrapper est exécutable
+- java -version # Vérifier la version de Java
+- ls -l /opt/ # Vérifier où Java est installé
+- ls -l /usr/lib/jvm/
+
+validate:
+  stage: validate
+  script:
+  - ./gradlew --version
+  - ./gradlew help
+  allow_failure: false # Stoppe immédiatement le pipeline si Gradle est mal configuré
 
 build:
   stage: build
@@ -18,7 +30,7 @@ build:
   - ./gradlew build
   artifacts:
     paths:
-    - build/libs/*.war # Stocker l'artefact WAR pour les autres jobs
+    - build/libs/*.war
     expire_in: 1 week
 
 test:
@@ -26,17 +38,31 @@ test:
   script:
   - ./gradlew test
   allow_failure: false # Le pipeline échoue si les tests échouent
+  dependencies:
+  - build
+
+pack:
+  stage: pack
+  script:
+  - ./gradlew war # Si c'est un projet WAR
+  # - ./gradlew jar  # Utiliser JAR si nécessaire
+  artifacts:
+    paths:
+    - build/libs/*.war # Change selon ton build (ex: `.jar`)
+    expire_in: 1 week
+  dependencies:
+  - build
 
 publish:
   stage: publish
-  dependencies:
-  - build # Assure que `publish` utilise l'artefact du `build`
   script:
-  - export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
-  - echo "Authentification pour GitLab Package Registry..."
+  - export JAVA_HOME="/opt/java/openjdk" # Correction ici
+  - echo "📦 Authentification pour GitLab Package Registry..."
   - echo "machine gitlab.com login ${CI_DEPLOY_USER} password ${CI_DEPLOY_PASSWORD}" > ~/.netrc
   - ./gradlew publish
+  only:
+  - main
+  dependencies:
+  - pack
   rules:
-  - if: $CI_COMMIT_BRANCH == "main" # Déclenche ce job uniquement si la branche est `main`
-
-
+  - if: $CI_COMMIT_BRANCH == "main"

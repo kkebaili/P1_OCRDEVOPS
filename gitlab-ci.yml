@@ -45,8 +45,6 @@ publish:
   - echo "Authentification pour GitLab Package Registry..."
   - echo "machine gitlab.com login ${CI_DEPLOY_USER} password ${CI_DEPLOY_PASSWORD}" > ~/.netrc
   - ./gradlew publish
-  only:
-  - main
   dependencies:
   - pack
   rules:

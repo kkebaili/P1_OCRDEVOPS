@@ -1,8 +1,8 @@
 Initialized native services in: /home/osboxes/.gradle/native
 Initialized jansi services in: /home/osboxes/.gradle/native
 Received JVM installation metadata from '/usr/lib/jvm/java-21-openjdk-amd64': {JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64, JAVA_VERSION=21.0.6, JAVA_VENDOR=Ubuntu, RUNTIME_NAME=OpenJDK Runtime Environment, RUNTIME_VERSION=21.0.6+7-Ubuntu-120.04.1, VM_NAME=OpenJDK 64-Bit Server VM, VM_VERSION=21.0.6+7-Ubuntu-120.04.1, VM_VENDOR=Ubuntu, OS_ARCH=amd64}
-The client will now receive all logging from the daemon (pid: 2606). The daemon log file: /home/osboxes/.gradle/daemon/8.7/daemon-2606.out.log
-Starting 5th build in daemon [uptime: 53 mins 31.512 secs, performance: 99%, GC rate: 0.00/s, heap usage: 9% of 341.3 MiB, non-heap usage: 23% of 384 MiB]
+The client will now receive all logging from the daemon (pid: 10398). The daemon log file: /home/osboxes/.gradle/daemon/8.7/daemon-10398.out.log
+Starting 2nd build in daemon [uptime: 1 hrs 18 mins 18.04 secs, performance: 98%, GC rate: 0.14/s, heap usage: 6% of 341.3 MiB, non-heap usage: 17% of 384 MiB]
 Using 1 worker leases.
 Now considering [/home/osboxes/DEVOPS2] as hierarchies to watch
 Watching the file system is configured to be enabled if available
@@ -122,72 +122,21 @@ Applying dependency management to configuration 'testRuntimeOnly' in project 'wo
 Applying dependency management to configuration 'providedCompile' in project 'workshop-organizer'
 Applying dependency management to configuration 'providedRuntime' in project 'workshop-organizer'
 All projects evaluated.
-Task name matched 'clean'
 Task name matched 'build'
-Selected primary task 'clean' from project :
 Selected primary task 'build' from project :
-Path for java installation '/usr/lib/jvm/openjdk-17' (Common Linux Locations) does not contain a java executable
 Path for java installation '/usr/lib/jvm/openjdk-21' (Common Linux Locations) does not contain a java executable
-Tasks to be executed: [task ':clean', task ':openApiGenerate', task ':compileJava', task ':processResources', task ':classes', task ':resolveMainClassName', task ':bootWar', task ':war', task ':assemble', task ':compileTestJava', task ':processTestResources', task ':testClasses', task ':test', task ':check', task ':build']
+Path for java installation '/usr/lib/jvm/openjdk-17' (Common Linux Locations) does not contain a java executable
+Tasks to be executed: [task ':openApiGenerate', task ':compileJava', task ':processResources', task ':classes', task ':resolveMainClassName', task ':bootWar', task ':war', task ':assemble', task ':compileTestJava', task ':processTestResources', task ':testClasses', task ':test', task ':check', task ':build']
 Tasks that were excluded: []
-Resolve mutations for :clean (Thread[#198,included builds,5,main]) started.
-:clean (Thread[#198,included builds,5,main]) started.
+Resolve mutations for :openApiGenerate (Thread[#75,included builds,5,main]) started.
+:openApiGenerate (Thread[#75,included builds,5,main]) started.
 
-> Task :clean
-Caching disabled for task ':clean' because:
-  Build cache is disabled
-Task ':clean' is not up-to-date because:
-  Task has not declared any outputs despite executing actions.
-destroyer locations for task group 0 (Thread[#198,included builds,5,main]) started.
-Resolve mutations for :openApiGenerate (Thread[#198,included builds,5,main]) started.
-:openApiGenerate (Thread[#198,included builds,5,main]) started.
-
-> Task :openApiGenerate
+> Task :openApiGenerate UP-TO-DATE
 Caching disabled for task ':openApiGenerate' because:
   Build cache is disabled
-Task ':openApiGenerate' is not up-to-date because:
-  Output property 'outputDir' file /home/osboxes/DEVOPS2/build/generate-resources/main has been removed.
-  Output property 'outputDir' file /home/osboxes/DEVOPS2/build/generate-resources/main/.openapi-generator has been removed.
-  Output property 'outputDir' file /home/osboxes/DEVOPS2/build/generate-resources/main/.openapi-generator/FILES has been removed.
-  Output property 'outputDir' file /home/osboxes/DEVOPS2/build/generate-resources/main/.openapi-generator/VERSION has been removed.
-  Output property 'outputDir' file /home/osboxes/DEVOPS2/build/generate-resources/main/.openapi-generator-ignore has been removed.
-  Output property 'outputDir' file /home/osboxes/DEVOPS2/build/generate-resources/main/pom.xml has been removed.
-  Output property 'outputDir' file /home/osboxes/DEVOPS2/build/generate-resources/main/README.md has been removed.
-  Output property 'outputDir' file /home/osboxes/DEVOPS2/build/generate-resources/main/src has been removed.
-Generating with dryRun=false
-No .openapi-generator-ignore file found.
-OpenAPI Generator: spring (server)
-Generator 'spring' is considered stable.
-----------------------------------
-Environment variable JAVA_POST_PROCESS_FILE not defined so the Java code may not be properly formatted. To define it, try 'export JAVA_POST_PROCESS_FILE="/usr/local/bin/clang-format -i"' (Linux/Mac)
-NOTE: To enable file post-processing, 'enablePostProcessFile' must be set to `true` (--enable-post-process-file for CLI).
-Invoker Package Name, originally not set, is now derived from api package name: fr.oc.devops
-Processing operation listNotions
-Processing operation createNotion
-Processing operation listWorkshops
-Processing operation createWorkshops
-Processing operation showWorkshopById
-writing file /home/osboxes/DEVOPS2/build/generate-resources/main/src/main/java-generated/fr/oc/devops/backend/models/Error.java
-writing file /home/osboxes/DEVOPS2/build/generate-resources/main/src/main/java-generated/fr/oc/devops/backend/models/NewNotion.java
-writing file /home/osboxes/DEVOPS2/build/generate-resources/main/src/main/java-generated/fr/oc/devops/backend/models/NewWorkshop.java
-writing file /home/osboxes/DEVOPS2/build/generate-resources/main/src/main/java-generated/fr/oc/devops/backend/models/Notion.java
-writing file /home/osboxes/DEVOPS2/build/generate-resources/main/src/main/java-generated/fr/oc/devops/backend/models/Workshop.java
-writing file /home/osboxes/DEVOPS2/build/generate-resources/main/src/main/java-generated/fr/oc/devops/backend/NotionsApi.java
-writing file /home/osboxes/DEVOPS2/build/generate-resources/main/src/main/java-generated/fr/oc/devops/backend/WorkshopsApi.java
-writing file /home/osboxes/DEVOPS2/build/generate-resources/main/pom.xml
-writing file /home/osboxes/DEVOPS2/build/generate-resources/main/README.md
-writing file /home/osboxes/DEVOPS2/build/generate-resources/main/src/main/java-generated/fr/oc/devops/backend/ApiUtil.java
-writing file /home/osboxes/DEVOPS2/build/generate-resources/main/.openapi-generator-ignore
-writing file /home/osboxes/DEVOPS2/build/generate-resources/main/.openapi-generator/VERSION
-writing file /home/osboxes/DEVOPS2/build/generate-resources/main/.openapi-generator/FILES
-################################################################################
-# Thanks for using OpenAPI Generator.                                          #
-# Please consider donation to help us maintain this project 🙏                 #
-# https://opencollective.com/openapi_generator/donate                          #
-################################################################################
-Successfully generated code to /home/osboxes/DEVOPS2/build/generate-resources/main
-Resolve mutations for :compileJava (Thread[#198,included builds,5,main]) started.
-:compileJava (Thread[#198,included builds,5,main]) started.
+Skipping task ':openApiGenerate' as it is up-to-date.
+Resolve mutations for :compileJava (Thread[#75,included builds,5,main]) started.
+:compileJava (Thread[#75,included builds,5,main]) started.
 
 > Task :compileJava
 Resolving global dependency management for project 'workshop-organizer'
@@ -196,47 +145,34 @@ Excluding []
 Custom actions are attached to task ':compileJava'.
 Caching disabled for task ':compileJava' because:
   Build cache is disabled
-Task ':compileJava' is not up-to-date because:
-  Output property 'destinationDirectory' file /home/osboxes/DEVOPS2/build/classes/java/main has been removed.
-  Output property 'destinationDirectory' file /home/osboxes/DEVOPS2/build/classes/java/main/fr has been removed.
-  Output property 'destinationDirectory' file /home/osboxes/DEVOPS2/build/classes/java/main/fr/oc has been removed.
-  Output property 'options.generatedSourceOutputDirectory' file /home/osboxes/DEVOPS2/build/generated/sources/annotationProcessor/java/main has been removed.
-The input changes require a full rebuild for incremental task ':compileJava'.
-Full recompilation is required because no incremental change information is available. This is usually caused by clean builds or changing compiler arguments.
-Compiling with toolchain '/usr/lib/jvm/java-17-openjdk-amd64'.
-Compiling with JDK Java compiler API.
-Class dependency analysis for incremental compilation took 0.005 secs.
-Created classpath snapshot for incremental compilation in 0.076 secs.
-Resolve mutations for :processResources (Thread[#198,included builds,5,main]) started.
-:processResources (Thread[#198,included builds,5,main]) started.
+Skipping task ':compileJava' as it is up-to-date.
 
-> Task :processResources
+> Task :compileJava UP-TO-DATE
+Resolve mutations for :processResources (Thread[#75,included builds,5,main]) started.
+:processResources (Thread[#75,included builds,5,main]) started.
+
+> Task :processResources UP-TO-DATE
 Caching disabled for task ':processResources' because:
   Build cache is disabled
   Not worth caching
-Task ':processResources' is not up-to-date because:
-  Output property 'destinationDir' file /home/osboxes/DEVOPS2/build/resources/main has been removed.
-  Output property 'destinationDir' file /home/osboxes/DEVOPS2/build/resources/main/application.properties has been removed.
-  Output property 'destinationDir' file /home/osboxes/DEVOPS2/build/resources/main/specs has been removed.
-  Output property 'destinationDir' file /home/osboxes/DEVOPS2/build/resources/main/static has been removed.
-Resolve mutations for :classes (Thread[#198,included builds,5,main]) started.
-:classes (Thread[#198,included builds,5,main]) started.
+Skipping task ':processResources' as it is up-to-date.
+Resolve mutations for :classes (Thread[#75,included builds,5,main]) started.
+:classes (Thread[#75,included builds,5,main]) started.
 
-> Task :classes
+> Task :classes UP-TO-DATE
 Skipping task ':classes' as it has no actions.
-Resolve mutations for :resolveMainClassName (Thread[#198,included builds,5,main]) started.
-:resolveMainClassName (Thread[#198,included builds,5,main]) started.
+Resolve mutations for :resolveMainClassName (Thread[#75,included builds,5,main]) started.
+:resolveMainClassName (Thread[#75,included builds,5,main]) started.
 
-> Task :resolveMainClassName
+> Task :resolveMainClassName UP-TO-DATE
 Caching disabled for task ':resolveMainClassName' because:
   Build cache is disabled
   Not worth caching
-Task ':resolveMainClassName' is not up-to-date because:
-  Output property 'outputFile' file /home/osboxes/DEVOPS2/build/resolvedMainClassName has been removed.
-Resolve mutations for :bootWar (Thread[#198,included builds,5,main]) started.
-:bootWar (Thread[#198,included builds,5,main]) started.
+Skipping task ':resolveMainClassName' as it is up-to-date.
+Resolve mutations for :bootWar (Thread[#75,included builds,5,main]) started.
+:bootWar (Thread[#75,included builds,5,main]) started.
 
-> Task :bootWar
+> Task :bootWar UP-TO-DATE
 Excluding []
 Excluding []
 Excluding []
@@ -245,79 +181,56 @@ Excluding []
 Caching disabled for task ':bootWar' because:
   Build cache is disabled
   Not worth caching
-Task ':bootWar' is not up-to-date because:
-  Output property 'archiveFile' file /home/osboxes/DEVOPS2/build/libs/workshop-organizer.war has been removed.
-file or directory '/home/osboxes/DEVOPS2/src/main/webapp', not found
-Resolve mutations for :war (Thread[#198,included builds,5,main]) started.
-:war (Thread[#198,included builds,5,main]) started.
+Skipping task ':bootWar' as it is up-to-date.
+Resolve mutations for :war (Thread[#75,included builds,5,main]) started.
+:war (Thread[#75,included builds,5,main]) started.
 
-> Task :war
+> Task :war UP-TO-DATE
 Caching disabled for task ':war' because:
   Build cache is disabled
   Not worth caching
-Task ':war' is not up-to-date because:
-  Output property 'archiveFile' file /home/osboxes/DEVOPS2/build/libs/mon-app.war has been removed.
-file or directory '/home/osboxes/DEVOPS2/src/main/webapp', not found
-Resolve mutations for :assemble (Thread[#198,included builds,5,main]) started.
-:assemble (Thread[#198,included builds,5,main]) started.
+Skipping task ':war' as it is up-to-date.
+Resolve mutations for :assemble (Thread[#75,included builds,5,main]) started.
+:assemble (Thread[#75,included builds,5,main]) started.
 
-> Task :assemble
+> Task :assemble UP-TO-DATE
 Skipping task ':assemble' as it has no actions.
-Resolve mutations for :compileTestJava (Thread[#198,included builds,5,main]) started.
-:compileTestJava (Thread[#198,included builds,5,main]) started.
+Resolve mutations for :compileTestJava (Thread[#75,included builds,5,main]) started.
+:compileTestJava (Thread[#75,included builds,5,main]) started.
 
-> Task :compileTestJava
+> Task :compileTestJava UP-TO-DATE
 Excluding []
 Excluding []
 Custom actions are attached to task ':compileTestJava'.
 Caching disabled for task ':compileTestJava' because:
   Build cache is disabled
-Task ':compileTestJava' is not up-to-date because:
-  Output property 'destinationDirectory' file /home/osboxes/DEVOPS2/build/classes/java/test has been removed.
-  Output property 'destinationDirectory' file /home/osboxes/DEVOPS2/build/classes/java/test/fr has been removed.
-  Output property 'destinationDirectory' file /home/osboxes/DEVOPS2/build/classes/java/test/fr/oc has been removed.
-  Output property 'options.generatedSourceOutputDirectory' file /home/osboxes/DEVOPS2/build/generated/sources/annotationProcessor/java/test has been removed.
-The input changes require a full rebuild for incremental task ':compileTestJava'.
-Full recompilation is required because no incremental change information is available. This is usually caused by clean builds or changing compiler arguments.
-Compiling with toolchain '/usr/lib/jvm/java-17-openjdk-amd64'.
-Compiling with JDK Java compiler API.
-Class dependency analysis for incremental compilation took 0.0 secs.
-Created classpath snapshot for incremental compilation in 0.073 secs.
-Resolve mutations for :processTestResources (Thread[#198,included builds,5,main]) started.
-:processTestResources (Thread[#198,included builds,5,main]) started.
+Skipping task ':compileTestJava' as it is up-to-date.
+Resolve mutations for :processTestResources (Thread[#75,included builds,5,main]) started.
+:processTestResources (Thread[#75,included builds,5,main]) started.
 
 > Task :processTestResources NO-SOURCE
 Skipping task ':processTestResources' as it has no source files and no previous output files.
-Resolve mutations for :testClasses (Thread[#198,included builds,5,main]) started.
-:testClasses (Thread[#198,included builds,5,main]) started.
+Resolve mutations for :testClasses (Thread[#75,included builds,5,main]) started.
+:testClasses (Thread[#75,included builds,5,main]) started.
 
-> Task :testClasses
+> Task :testClasses UP-TO-DATE
 Skipping task ':testClasses' as it has no actions.
-Resolve mutations for :test (Thread[#198,included builds,5,main]) started.
-:test (Thread[#198,included builds,5,main]) started.
+Resolve mutations for :test (Thread[#75,included builds,5,main]) started.
+:test (Thread[#75,included builds,5,main]) started.
 
-> Task :test
+> Task :test UP-TO-DATE
 Excluding []
 Custom actions are attached to task ':test'.
 Caching disabled for task ':test' because:
   Build cache is disabled
-Task ':test' is not up-to-date because:
-  Output property 'binaryResultsDirectory' file /home/osboxes/DEVOPS2/build/test-results/test/binary has been removed.
-  Output property 'binaryResultsDirectory' file /home/osboxes/DEVOPS2/build/test-results/test/binary/output.bin has been removed.
-  Output property 'binaryResultsDirectory' file /home/osboxes/DEVOPS2/build/test-results/test/binary/output.bin.idx has been removed.
-  Output property 'binaryResultsDirectory' file /home/osboxes/DEVOPS2/build/test-results/test/binary/results.bin has been removed.
-  Output property 'reports.enabledReports.html.outputLocation' file /home/osboxes/DEVOPS2/build/reports/tests/test has been removed.
-Finished generating test XML results (0.0 secs) into: /home/osboxes/DEVOPS2/build/test-results/test
-Generating HTML test report...
-Finished generating test html results (0.004 secs) into: /home/osboxes/DEVOPS2/build/reports/tests/test
-✅ Les tests unitaires ont été exécutés avec succès!
-Resolve mutations for :check (Thread[#198,included builds,5,main]) started.
-:check (Thread[#198,included builds,5,main]) started.
+Skipping task ':test' as it is up-to-date.
+Resolve mutations for :check (Thread[#75,included builds,5,main]) started.
+:check (Thread[#75,included builds,5,main]) started.
 
-> Task :check
+> Task :check UP-TO-DATE
 Skipping task ':check' as it has no actions.
-Resolve mutations for :build (Thread[#198,included builds,5,main]) started.
-:build (Thread[#198,included builds,5,main]) started.
+Resolve mutations for :build (Thread[#75,included builds,5,main]) started.
+:build (Thread[#75,included builds,5,main]) started.
 
 > Task :build
 Caching disabled for task ':build' because:
@@ -326,11 +239,5 @@ Task ':build' is not up-to-date because:
   Task has not declared any outputs despite executing actions.
 ✅ La tâche de compilation a été exécutée avec succès!
 
-Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
-
-You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
-
-For more on this, please refer to https://docs.gradle.org/8.7/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
-
-BUILD SUCCESSFUL in 22s
-10 actionable tasks: 10 executed
+BUILD SUCCESSFUL in 8s
+9 actionable tasks: 1 executed, 8 up-to-date

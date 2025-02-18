@@ -2,10 +2,11 @@ import subprocess
 import typer
 import requests
 from pathlib import Path
+import config  # Importer les variables depuis config.py
 
 app = typer.Typer()
 
-def run_command(command, log_file, error_log_file, debug=False):
+def run_command(command, log_file, error_log_file, debug=config.DEBUG_MODE):
     """Exécute une commande shell et enregistre les logs."""
     print(f"🔧 Exécution de la commande: {command}")
 
@@ -25,17 +26,13 @@ def run_command(command, log_file, error_log_file, debug=False):
     print(f"✅ Commande réussie: {command}")
 
 @app.command()
-def build(
-    token: str = typer.Option(..., help="Token d'authentification"),
-    project_id: str = typer.Option(..., help="ID du projet GitLab"),
-    token_name: str = typer.Option(..., help="Nom du token utilisé"),
-    logs_dir: Path = Path("./logs"),
-    debug: bool = False
-):
+def build():
     """Compile le projet avec Gradle."""
+    logs_dir = Path("./logs")
     logs_dir.mkdir(parents=True, exist_ok=True)
+    
     try:
-        run_command(f"./gradlew build --info", logs_dir / "build_output.log", logs_dir / "build_errors.log", debug)
+        run_command(f"./gradlew build --info", logs_dir / "build_output.log", logs_dir / "build_errors.log")
     except RuntimeError:
         print("❌ Échec de la compilation du projet.")
         return
@@ -43,17 +40,13 @@ def build(
     print("✅ Compilation réussie!")
 
 @app.command()
-def test(
-    token: str = typer.Option(..., help="Token d'authentification"),
-    project_id: str = typer.Option(..., help="ID du projet GitLab"),
-    token_name: str = typer.Option(..., help="Nom du token utilisé"),
-    logs_dir: Path = Path("./logs"),
-    debug: bool = False
-):
+def test():
     """Exécute les tests unitaires avec Gradle."""
+    logs_dir = Path("./logs")
     logs_dir.mkdir(parents=True, exist_ok=True)
+
     try:
-        run_command(f"./gradlew test --info", logs_dir / "test_output.log", logs_dir / "test_errors.log", debug)
+        run_command(f"./gradlew test --info", logs_dir / "test_output.log", logs_dir / "test_errors.log")
     except RuntimeError:
         print("❌ Échec des tests unitaires.")
         return
@@ -61,17 +54,13 @@ def test(
     print("✅ Tests exécutés avec succès!")
 
 @app.command()
-def pack(
-    token: str = typer.Option(..., help="Token d'authentification"),
-    project_id: str = typer.Option(..., help="ID du projet GitLab"),
-    token_name: str = typer.Option(..., help="Nom du token utilisé"),
-    logs_dir: Path = Path("./logs"),
-    debug: bool = False
-):
+def pack():
     """Génère le fichier .war de l'application."""
+    logs_dir = Path("./logs")
     logs_dir.mkdir(parents=True, exist_ok=True)
+
     try:
-        run_command(f"./gradlew war --info", logs_dir / "pack_output.log", logs_dir / "pack_errors.log", debug)
+        run_command(f"./gradlew war --info", logs_dir / "pack_output.log", logs_dir / "pack_errors.log")
     except RuntimeError:
         print("❌ Échec de la génération du fichier .war.")
         return
@@ -79,19 +68,13 @@ def pack(
     print("✅ Fichier .war généré avec succès!")
 
 @app.command()
-def publish(
-    token: str = typer.Option(..., help="Token d'authentification"),
-    project_id: str = typer.Option(..., help="ID du projet GitLab"),
-    token_name: str = typer.Option(..., help="Nom du token utilisé"),
-    gradle_command: str = typer.Option("publish", help="Commande Gradle pour la publication"),
-    logs_dir: Path = Path("./logs"),
-    debug: bool = False
-):
-    """Publie le projet dans la GitLab Package Registry avec Gradle et vérifie la publication."""
+def publish():
+    """Publie le projet dans la GitLab Package Registry avec Gradle."""
     
+    logs_dir = Path("./logs")
     logs_dir.mkdir(parents=True, exist_ok=True)
 
-    print(f"🚀 Publication du package dans la GitLab Package Registry (projet {project_id})...")
+    print(f"🚀 Publication du package dans la GitLab Package Registry (projet {config.PROJECT_ID})...")
 
     # Configuration du fichier gradle.properties pour l'authentification
     gradle_props_path = Path("gradle.properties")
@@ -99,10 +82,10 @@ def publish(
 publishing {{
     repositories {{
         maven {{
-            url = uri("https://gitlab.com/api/v4/projects/{project_id}/packages/maven")
+            url = uri("https://gitlab.com/api/v4/projects/{config.PROJECT_ID}/packages/maven")
             credentials {{
-                username = "{token_name}"
-                password = "{token}"
+                username = "{config.TOKEN_NAME}"
+                password = "{config.TOKEN}"
             }}
         }}
     }}
@@ -113,7 +96,7 @@ publishing {{
 
     # 🔧 Exécution de Gradle avec `run_command`
     try:
-        run_command(f"./gradlew {gradle_command} --info", logs_dir / "publish_output.log", logs_dir / "publish_errors.log", debug)
+        run_command(f"./gradlew publish --info", logs_dir / "publish_output.log", logs_dir / "publish_errors.log")
     except RuntimeError:
         print("❌ Échec de la publication du package.")
         return
@@ -123,8 +106,8 @@ publishing {{
     # 🔎 Vérification de la publication avec Deploy Token
     print("🔎 Vérification de la publication dans la GitLab Package Registry...")
 
-    package_registry_url = f"https://gitlab.com/api/v4/projects/{project_id}/packages"
-    auth = (token_name, token)  # Utilisation du Deploy Token pour l'authentification
+    package_registry_url = f"https://gitlab.com/api/v4/projects/{config.PROJECT_ID}/packages"
+    auth = (config.TOKEN_NAME, config.TOKEN)  # Utilisation du Deploy Token pour l'authentification
 
     response = requests.get(package_registry_url, auth=auth)
 

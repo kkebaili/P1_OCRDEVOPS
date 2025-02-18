@@ -1,68 +1,53 @@
-image: gradle:8.6-jdk17 # Vérifie l'image utilisée
+image: gradle:8.6-jdk17 # Utilisation d'une image Gradle avec JDK 17
 
 stages:
-- validate
-- build
-- test
-- pack
-- publish
+  - build
+  - test
+  - pack
+  - publish
 
 variables:
   GRADLE_OPTS: "-Dorg.gradle.daemon=false"
 
 before_script:
-- echo "🔧 Initialisation de l'environnement..."
-- chmod +x gradlew # S'assurer que Gradle Wrapper est exécutable
-- java -version # Vérifier la version de Java
-- ls -l /opt/ # Vérifier où Java est installé
-- ls -l /usr/lib/jvm/
-
-validate:
-  stage: validate
-  script:
-  - ./gradlew --version
-  - ./gradlew help
-  allow_failure: false # Stoppe immédiatement le pipeline si Gradle est mal configuré
+  - echo "🔧 Initialisation de l'environnement..."
+  - chmod +x gradlew # Rendre Gradle Wrapper exécutable
+  - java -version # Vérifier la version de Java
+  - ls -l /usr/lib/jvm/ # Vérifier si Java est bien installé
 
 build:
   stage: build
   script:
-  - ./gradlew build
+    - ./gradlew build
   artifacts:
     paths:
-    - build/libs/*.war
+      - build/libs/*.war
     expire_in: 1 week
 
 test:
   stage: test
   script:
-  - ./gradlew test
+    - ./gradlew test
   allow_failure: false # Le pipeline échoue si les tests échouent
-  dependencies:
-  - build
 
 pack:
   stage: pack
   script:
-  - ./gradlew war # Si c'est un projet WAR
-  # - ./gradlew jar  # Utiliser JAR si nécessaire
+    - ./gradlew war # Si c'est un projet WAR
+    # - ./gradlew jar  # Utiliser JAR si nécessaire
   artifacts:
     paths:
-    - build/libs/*.war # Change selon ton build (ex: `.jar`)
+      - build/libs/*.war # Change selon ton build (ex: `.jar`)
     expire_in: 1 week
-  dependencies:
-  - build
 
 publish:
   stage: publish
   script:
-  - export JAVA_HOME="/opt/java/openjdk" # Correction ici
-  - echo "📦 Authentification pour GitLab Package Registry..."
-  - echo "machine gitlab.com login ${CI_DEPLOY_USER} password ${CI_DEPLOY_PASSWORD}" > ~/.netrc
-  - ./gradlew publish
-  only:
-  - main
+    - export JAVA_HOME="/usr/lib/jvm/java-17-openjdk-amd64" # Correction du JAVA_HOME
+    - echo "📦 Authentification pour GitLab Package Registry..."
+    - echo "machine gitlab.com login ${CI_DEPLOY_USER} password ${CI_DEPLOY_PASSWORD}" > ~/.netrc
+    - ./gradlew publish
   dependencies:
-  - pack
+    - pack
   rules:
-  - if: $CI_COMMIT_BRANCH == "main"
+    - if: $CI_COMMIT_BRANCH == "main"  # Utilisation de `rules` au lieu de `only`
